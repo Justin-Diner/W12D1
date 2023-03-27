@@ -8,20 +8,20 @@
 #  updated_at :datetime         not null
 #
 class Move < ApplicationRecord
-	validates :name, presence: true
-
-    has_many{
+	validates :name, length: { in: 1..255 }, uniqueness: { message: "'%{value}' is already in use" }
+    
+    has_many(
         :poke_moves,
         primary_key: :id,
         foreign_key: :move_id,
         class_name: :PokeMove,
         dependent: :destroy
-    }
+    )
 
-    has_many{
+    has_many(
         :pokemons,
         through: :poke_moves,
         source: :pokemon,
         dependent: :destroy
-    }
+    )
 end
