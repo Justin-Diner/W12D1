@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Move < ApplicationRecord
+	validates :name, presence: true
 
     has_many{
         :poke_moves,

@@ -9,7 +9,6 @@
 #  updated_at :datetime         not null
 #
 class PokeMove < ApplicationRecord
-
     belongs_to{
         :pokemon,
         primary_key: :id,
