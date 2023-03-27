@@ -14,10 +14,12 @@
 #  updated_at :datetime         not null
 #
 class Pokemon < ApplicationRecord
-	validates  :attack, :defense, :image_url, presence: true
+	validates :attack, :defense, :image_url, presence: true
 	validates :captured, inclusion: [true, false]
 	validates :name, length: { in: 3..255 }, uniqueness: { message: "'%{value}' is already in use" }
-	validates :number, length: { in: 1..255 }, uniqueness: { message: "'%{value}' is already in use" }
+	validates :number, numericality: { greater_than: 0}
+	validates :attack, numericality: {in: 0..100}
+	validates :defense, numericality: {in: 0..100}
 
 	TYPES = [
     'fire',

@@ -19,7 +19,7 @@ class Move < ApplicationRecord
     )
 
     has_many(
-        :pokemons,
+        :pokemon,
         through: :poke_moves,
         source: :pokemon,
         dependent: :destroy
